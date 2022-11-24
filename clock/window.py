@@ -49,7 +49,7 @@ class Window(Tk):
         self.tk.call('source', './clock/assets/Sun Valley/sun-valley.tcl')
         self.tk.call('set_theme', 'light')
 
-        Style().configure("Tab", focuscolor=Style().configure(".")["background"])
+        Style().configure('Tab', focuscolor=Style().configure('.')['background'])
 
         self.iconphoto(False, PhotoImage(file='./clock/assets/icon_small.png', master=self))
 
@@ -63,7 +63,7 @@ class Window(Tk):
 
             self.notebook.add(frame, text=f'{title:^22}')
 
-        self.notebook.bind("<<NotebookTabChanged>>", lambda e: self.switch_tab())
+        self.notebook.bind('<<NotebookTabChanged>>', lambda e: self.switch_tab())
 
     def switch_tab(self):
         self.current_tab = self.tabs[self.notebook.index('current')]
