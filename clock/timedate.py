@@ -14,8 +14,6 @@ class TimeDate():
     }
 
     def __init__(self, window, frame):
-        super().__init__()
-
         self.window = window
         self.frame = frame
 
