@@ -49,20 +49,20 @@ class TimeDate():
             font=('Poppins Light', 18)
         )
 
-        self.countries_label = Combobox(
+        self.countries_box = Combobox(
             values=tuple(self.zones.keys()),
             justify='center',
             state='readonly'
         )
 
-        self.countries_label.set(tuple(self.zones.keys())[0])
-        self.countries_label.bind("<<ComboboxSelected>>", lambda e: self.change_country())
+        self.countries_box.set(tuple(self.zones.keys())[0])
+        self.countries_box.bind("<<ComboboxSelected>>", lambda e: self.change_country())
 
     def show(self):
         self.country_label.grid(row=0)
         self.time_label.grid(row=1, pady=(0, 10))
         self.date_label.grid(row=1, pady=(110, 10))
-        self.countries_label.grid(ipady=6)
+        self.countries_box.grid(ipady=6)
 
         self.update()
 
@@ -70,7 +70,7 @@ class TimeDate():
         self.country_label.grid_forget()
         self.time_label.grid_forget()
         self.date_label.grid_forget()
-        self.countries_label.grid_forget()
+        self.countries_box.grid_forget()
 
         self.window.after_cancel(self.update_timer)
 
@@ -82,5 +82,5 @@ class TimeDate():
         self.update_timer = self.window.after(250, self.update)
 
     def change_country(self):
-        self.countries_label.selection_clear()
-        self.zone = self.countries_label.get()
+        self.countries_box.selection_clear()
+        self.zone = self.countries_box.get()
