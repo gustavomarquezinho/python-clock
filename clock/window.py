@@ -9,6 +9,8 @@ from tkinter.ttk import (
     Style
 )
 
+from timedate import TimeDate
+
 
 class Window(Tk):
     tabs = (
@@ -30,6 +32,8 @@ class Window(Tk):
 
         self.frame = Frame(pady=25)
         self.frame.grid(row=1)
+
+        self.timedate = TimeDate(self, self.frame)
 
         self.create_tabs(self.tabs)
 
@@ -66,7 +70,15 @@ class Window(Tk):
         self.notebook.bind('<<NotebookTabChanged>>', lambda e: self.switch_tab())
 
     def switch_tab(self):
+        match self.current_tab:
+            case 'Horário':
+                self.timedate.hide()
+
         self.current_tab = self.tabs[self.notebook.index('current')]
+
+        match self.current_tab:
+            case 'Horário':
+                self.timedate.show()
 
 
 if __name__ == '__main__':
