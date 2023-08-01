@@ -10,6 +10,7 @@ from tkinter.ttk import (
 )
 
 from timedate import TimeDate
+from stopwatch import Stopwatch
 
 
 class Window(Tk):
@@ -34,6 +35,7 @@ class Window(Tk):
         self.frame.grid(row=1)
 
         self.timedate = TimeDate(self, self.frame)
+        self.stopwatch = Stopwatch(self, self.frame)
 
         self.create_tabs(self.tabs)
 
@@ -74,11 +76,17 @@ class Window(Tk):
             case 'Horário':
                 self.timedate.hide()
 
+            case 'Cronômetro':
+                self.stopwatch.hide()
+
         self.current_tab = self.tabs[self.notebook.index('current')]
 
         match self.current_tab:
             case 'Horário':
                 self.timedate.show()
+
+            case 'Cronômetro':
+                self.stopwatch.show()
 
 
 if __name__ == '__main__':
